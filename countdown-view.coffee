@@ -10,7 +10,7 @@ Polymer "countdown-view",
     store.registerDefaultProfileNamespaces()
     store.registerDefaultNamespace('ev', 'http://bigasterisk.com/event#')
 
-    store.load "remote", "countdowns.js", (success, results) =>
+    store.load "remote", "/countdown/countdowns.json", (success, results) =>
       #store.load "remote", "gcalendarwatch/events?t1=2012-12-27T15:00:00-08:00", (success, results) ->
         store.execute "SELECT ?time ?label WHERE { ?ev ev:time ?time; rdfs:label ?label . } ORDER BY ?time", (success, results) =>
           console.log('countdowns', results)
