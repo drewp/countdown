@@ -1,0 +1,2 @@
+all: 
+	nodefront compile
