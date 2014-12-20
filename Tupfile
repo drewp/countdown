@@ -1,0 +1,2 @@
+: countdown-view.jade |> jade %f > %o |> countdown-view.html
+: countdown-view.coffee |> coffee -c %f |> countdown-view.js
