@@ -1,30 +1,20 @@
-link(rel="import", href="/lib/polymer/0.5.2/polymer.html")
 link(rel="import", href="/magma/magma-refreshing-widget.html")
 
 polymer-element(name='countdown-view', extends="magma-refreshing-widget")
   template
     link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel="stylesheet")
-    style.
-      .fromNow {
-        font-style: italic;
-        color: #6B6B6B;
-      }
-      .fa-sun-o {
-        color: rgb(184, 126, 5);
-        text-shadow: 0 0 3px yellow;
-        padding: 0 2px;
-      }
+    link(rel="stylesheet", href="style.css")
     div
       | Upcoming
       ul
         template(repeat="{{row in countdowns}}")
           li
-            span.fromNow: {{row.fromNow}}
+            span.fromNow {{row.fromNow}}
             template(repeat="{{d in row.soonDays}}")
               i.fa.fa-sun-o
             | -
             | 
-            span: {{row.label.value}}
+            span {{row.label.value}}
           
   script(src="/lib/jquery-2.0.3.min.js")
   script(src="/lib/moment/2.6.0/moment.min.js")
