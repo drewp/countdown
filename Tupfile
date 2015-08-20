@@ -1,2 +1,3 @@
 : countdown-view.jade |> jade %f |> countdown-view.html
 : countdown-view.coffee |> coffee -c %f |> countdown-view.js
+: magma-refreshing-widget.coffee |> coffee -c %f |> magma-refreshing-widget.js

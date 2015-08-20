@@ -1,22 +1,26 @@
-link(rel="import", href="/magma/magma-refreshing-widget.html")
+link(rel="import", href="/lib/polymer/1.0.9/polymer/polymer.html")
 
-polymer-element(name='countdown-view', extends="magma-refreshing-widget")
+
+
+
+dom-module(id='countdown-view')
+  link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel="stylesheet")
+  link(rel="stylesheet", href="style.css")
   template
-    link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", rel="stylesheet")
-    link(rel="stylesheet", href="style.css")
     div
       | Upcoming
       ul
-        template(repeat="{{row in countdowns}}")
+        template(is="dom-repeat", items="{{countdowns}}")
           li
-            span.fromNow {{row.fromNow}}
-            template(repeat="{{d in row.soonDays}}")
+            span.fromNow {{item.fromNow}}
+            template(is="dom-repeat", items="{{item.soonDays}}")
               i.fa.fa-sun-o
             | -
             | 
-            span {{row.label.value}}
+            span {{item.label.value}}
           
   script(src="/lib/jquery-2.0.3.min.js")
   script(src="/lib/moment/2.6.0/moment.min.js")
-  script(src="/lib/rdf_store/0.8.2/rdf_store_min.js")
+  script(src="/lib/rdf_store/0.8.2/rdf_store.js")
+  script(src="magma-refreshing-widget.js")
   script(src="countdown-view.js")  

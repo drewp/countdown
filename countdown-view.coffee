@@ -1,6 +1,27 @@
-Polymer "countdown-view",
+Polymer
+  is: "countdown-view",
+  behaviors: [MagmaRefreshingWidget],
+  properties:
+    countdowns: {notify: true}
   
   refreshSec: 60 * 60
+  
+  # rerun this more often, to keep the fromNow times right, for short countdowns
+  setCurrentCountdowns: ->
+    now = new Date()
+    @countdowns = []          
+    @results.forEach (r) =>
+      m = moment(new Date(r.time.value))
+      r.fromNow = m.fromNow()
+      r.soonDays = []
+      delta = moment.duration(m.valueOf() - moment().valueOf())
+      if delta < 0
+        return
+      days = delta.as('days')
+      if days < 7
+        r.soonDays.push('d') for d in [0...days]
+      @push('countdowns', r)
+    
   periodicReload: ->
     @countdowns = []
 
