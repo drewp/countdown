@@ -34,7 +34,7 @@ Polymer
     # using this instead of store.load('remote', url, ...) only
     # because the server isn't putting a good content-type on the
     # reponse.
-    $.getJSON "/countdown/countdowns.json", (d) =>
+    $.getJSON "/gcalendarwatch/countdowns.json", (d) =>
       store.load "application/ld+json", d, (success, results) =>
         #store.load "remote", "gcalendarwatch/events?t1=2012-12-27T15:00:00-08:00", (success, results) ->
           store.execute "SELECT ?time ?label WHERE { ?ev ev:time ?time; rdfs:label ?label . } ORDER BY ?time", (success, results) =>
